@@ -53,7 +53,7 @@ export default function Nav({ setIsOpen }: NavProps) {
       exit="exit"
     >
       <div className="relative flex mb-3">
-        <div className="flex flex-wrap">
+        <div className="flex flex-col">
           {links.map((link, i) => {
             const { title, href } = link;
             return (

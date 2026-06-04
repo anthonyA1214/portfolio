@@ -1,5 +1,5 @@
+import LenisProvider from "@/providers/lenis-provider";
 import { ThemeProvider } from "next-themes";
-import LenisProvider from "./smooth-scroll";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (

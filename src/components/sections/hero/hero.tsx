@@ -1,4 +1,5 @@
 import { WordRotate } from "@/components/ui/word-rotate";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -20,7 +21,7 @@ export default function Hero() {
                 <div className="flex flex-col">
                   <span>to</span>
                   <div className="relative flex items-center">
-                    <span className="opacity-0">hidden</span>
+                    <span className="opacity-0">create</span>
                     <WordRotate
                       className="absolute inset-0"
                       words={["code", "build", "create", "solve"]}
@@ -33,16 +34,17 @@ export default function Hero() {
         </div>
       </div>
 
-      {/*<div className="relative flex h-full flex-col items-center justify-center">
-        <div className="flex flex-col w-full px-4 md:px-6">
-          <span className="text-base font-light sm:text-lg md:text-xl lg:text-1xl xl:text-2xl 2xl:text-3xl tracking-tight">
-            Hi, my name is
-          </span>
-          <h1 className="text-2xl font-light sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl">
-            Anthony Amiluddin
-          </h1>
-        </div>
-      </div>*/}
+      <div className="relative w-full h-[50dvh] md:h-[60dvh] xl:h-[70dvh]">
+        <Image
+          src="/mypicture.jpg"
+          alt="My Picture"
+          fill
+          quality={100}
+          priority
+          className="object-cover object-top md:object-center"
+        />
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
     </section>
   );
 }
