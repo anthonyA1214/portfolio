@@ -1,9 +1,10 @@
-import { Hono } from "hono"
+import { showRoutes } from "hono/dev"
+import configureOpenAPI from "./lib/configure-open-api"
+import { createApp } from "./lib/create-app"
 
-const app = new Hono()
+const app = createApp()
 
-app.get("/", (c) => {
-  return c.text("Hello Hono!")
-})
+configureOpenAPI(app)
+showRoutes(app)
 
 export default app

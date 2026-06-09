@@ -3,6 +3,18 @@
   "name": "api",
   "main": "src/index.ts",
   "compatibility_date": "2026-06-06",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "portfolio_db",
+      "database_name": "portfolio-db",
+      "database_id": "bbcbdee6-ec94-41f2-a89a-80da2692dbc7",
+    },
+  ],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1,
+  },
   // "compatibility_flags": [
   //   "nodejs_compat"
   // ],
@@ -33,6 +45,6 @@
   // },
   // "observability": {
   //   "enabled": true,
-  //   "head_sampling_rate": 1
-  // }
+  //   "head_sampling_rate": 1,
+  // },
 }

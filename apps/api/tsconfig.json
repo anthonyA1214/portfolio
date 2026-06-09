@@ -8,6 +8,11 @@
     "skipLibCheck": true,
     "lib": ["ESNext"],
     "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
+    "jsxImportSource": "hono/jsx",
+    "types": [
+      "node",
+      "@cloudflare/workers-types",
+      "./worker-configuration.d.ts"
+    ]
   }
 }
