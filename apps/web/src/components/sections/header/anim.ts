@@ -1,6 +1,6 @@
-import { Transition, Variants } from "motion/react";
+import { Transition, Variants } from "motion/react"
 
-const transition: Transition = { duration: 1, ease: [0.76, 0, 0.24, 1] };
+const transition: Transition = { duration: 1, ease: [0.76, 0, 0.24, 1] }
 
 export const opacity: Variants = {
   initial: {
@@ -14,7 +14,7 @@ export const opacity: Variants = {
     opacity: 0,
     transition: { duration: 0.35 },
   },
-};
+}
 
 export const height: Variants = {
   initial: {
@@ -28,7 +28,7 @@ export const height: Variants = {
     height: 0,
     transition,
   },
-};
+}
 
 export const background: Variants = {
   initial: {
@@ -42,7 +42,7 @@ export const background: Variants = {
     height: 0,
     transition,
   },
-};
+}
 
 export const blur: Variants = {
   initial: {
@@ -59,7 +59,7 @@ export const blur: Variants = {
     opacity: 1,
     transition: { duration: 0.3 },
   },
-};
+}
 
 export const translate: Variants = {
   initial: {
@@ -76,7 +76,7 @@ export const translate: Variants = {
     opacity: 0,
     transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: i[1] },
   }),
-};
+}
 
 // my own
 
@@ -91,7 +91,7 @@ export const menuIcon: Variants = {
     opacity: 0,
     transition,
   },
-};
+}
 
 export const xIcon: Variants = {
   open: {
@@ -104,4 +104,4 @@ export const xIcon: Variants = {
     opacity: 0,
     transition,
   },
-};
+}

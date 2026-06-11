@@ -3,5 +3,5 @@ export default function ContactPage() {
     <div>
       <span>ContactPage</span>
     </div>
-  );
+  )
 }

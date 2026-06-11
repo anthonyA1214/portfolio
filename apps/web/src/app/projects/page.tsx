@@ -3,5 +3,5 @@ export default function ProjectsPage() {
     <div>
       <span>ProjectsPage</span>
     </div>
-  );
+  )
 }

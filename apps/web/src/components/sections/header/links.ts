@@ -15,4 +15,4 @@ export const links = [
     title: "Blog",
     href: "/blog",
   },
-];
+]

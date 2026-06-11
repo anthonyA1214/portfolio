@@ -9,7 +9,9 @@
     "lint": "eslint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit",
-    "preview": "vite preview"
+    "preview": "bun run build && vite preview",
+    "deploy": "bun run build && wrangler deploy",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
     "@workspace/ui": "workspace:*",
@@ -18,15 +20,17 @@
     "react-dom": "^19.2.6"
   },
   "devDependencies": {
-    "@workspace/eslint-config": "workspace:^",
-    "@workspace/typescript-config": "workspace:*",
+    "@cloudflare/vite-plugin": "1.40.1",
     "@tailwindcss/vite": "^4",
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^6",
+    "@workspace/eslint-config": "workspace:^",
+    "@workspace/typescript-config": "workspace:*",
     "eslint": "^10",
     "typescript": "~6",
-    "vite": "^8"
+    "vite": "^8",
+    "wrangler": "4.99.0"
   }
 }

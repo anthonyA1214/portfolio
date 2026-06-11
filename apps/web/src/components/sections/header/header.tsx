@@ -1,23 +1,23 @@
-"use client";
+"use client"
 
-import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
-import { background, menuIcon, opacity, xIcon } from "./anim";
-import Nav from "./nav/nav";
-import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react"
+import { useState } from "react"
+import { background, menuIcon, opacity, xIcon } from "./anim"
+import Nav from "./nav/nav"
+import { Menu, X } from "lucide-react"
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false)
 
   return (
-    <motion.header className="fixed top-0 left-0 right-0 backdrop-blur-lg z-20 bg-background/80 px-4 md:px-6">
-      <div className="relative flex items-center justify-between h-16 z-50">
+    <motion.header className="fixed top-0 right-0 left-0 z-20 bg-background/80 px-4 backdrop-blur-lg md:px-6">
+      <div className="relative z-50 flex h-16 items-center justify-between">
         {/**/}
         <span className="font-satisfy text-lg">anthony amiluddin</span>
 
         {/*hamburger*/}
         <div
-          className="flex items-center justify-center gap-2 cursor-pointer"
+          className="flex cursor-pointer items-center justify-center gap-2"
           onClick={() => setIsOpen((prev) => !prev)}
         >
           <div className="relative flex items-center lowercase">
@@ -62,9 +62,9 @@ export default function Header() {
         variants={background}
         initial="initial"
         animate={isOpen ? "open" : "closed"}
-        className="absolute h-full w-full top-full left-0 bg-background/50 z-10"
+        className="absolute top-full left-0 z-10 h-full w-full bg-background/50"
         onClick={() => setIsOpen(false)}
       />
     </motion.header>
-  );
+  )
 }

@@ -7,5 +7,5 @@ export default function About() {
         app directory and server components.
       </p>
     </section>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import About from "@/components/sections/about/about";
-import Hero from "@/components/sections/hero/hero";
+import About from "@/components/sections/about/about"
+import Hero from "@/components/sections/hero/hero"
 
 export default function HomePage() {
   return (
@@ -10,5 +10,5 @@ export default function HomePage() {
       <About />
       <About />
     </>
-  );
+  )
 }
