@@ -1,0 +1,15 @@
+api.localhost {
+    reverse_proxy host.docker.internal:8787
+}
+
+blog.localhost {
+    reverse_proxy host.docker.internal:4321
+}
+
+cms.localhost {
+    reverse_proxy host.docker.internal:5173
+}
+
+portfolio.localhost {
+    reverse_proxy host.docker.internal:3000
+}

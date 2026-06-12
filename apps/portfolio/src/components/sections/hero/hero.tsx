@@ -34,7 +34,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="relative h-[50dvh] w-full md:h-[60dvh] xl:h-[70dvh]">
+      <div className="relative h-[50vh] w-screen md:aspect-4/2 md:h-auto">
         <Image
           src="/mypicture.jpg"
           alt="My Picture"
