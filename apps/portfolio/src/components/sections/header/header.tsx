@@ -5,15 +5,29 @@ import { useState } from "react"
 import { background, menuIcon, opacity, xIcon } from "./anim"
 import Nav from "./nav/nav"
 import { Menu, X } from "lucide-react"
+import Link from "next/link"
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   return (
-    <motion.header className="fixed top-0 right-0 left-0 z-20 bg-background/80 px-4 backdrop-blur-lg md:px-6">
+    <motion.header
+      initial={{
+        y: -80,
+      }}
+      animate={{
+        y: 0,
+      }}
+      transition={{
+        duration: 0.8,
+      }}
+      className="fixed top-0 right-0 left-0 z-20 bg-background/80 px-4 backdrop-blur-lg md:px-6"
+    >
       <div className="relative z-50 flex h-16 items-center justify-between">
         {/**/}
-        <span className="font-satisfy text-lg">anthony amiluddin</span>
+        <Link href="/">
+          <span className="font-satisfy text-lg">anthony amiluddin</span>
+        </Link>
 
         {/*hamburger*/}
         <div
