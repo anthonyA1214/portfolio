@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="scrollbar-hide h-full antialiased"
+      className="scrollbar-thin h-full antialiased"
       suppressHydrationWarning
     >
       <body

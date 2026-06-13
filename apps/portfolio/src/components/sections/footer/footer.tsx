@@ -47,6 +47,7 @@ export default function Footer() {
                       className="underline-offset-4 hover:underline"
                       href={link.href}
                       key={`footer_sitemap_${i}`}
+                      external={link.href.startsWith("http") ? true : false}
                     >
                       {link.label}
                     </AnimatedLink>
