@@ -33,6 +33,10 @@ export default function About() {
             src="/lotties/83627cee-1153-11ee-b832-fb1242dd7de9.json"
             autoplay
             loop
+            className="shrink-0"
+            layout={{
+              fit: "contain",
+            }}
           />
         </div>
       </div>

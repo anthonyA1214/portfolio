@@ -17,8 +17,7 @@ export default function Contact() {
               </p>
 
               <div className="flex gap-2">
-                <Button variant="outline">View Resume</Button>
-                <Button>Learn More</Button>
+                test
               </div>
             </div>
           </div>
