@@ -1,7 +1,7 @@
 import { sql } from "drizzle-orm"
 import { sqliteTable, text, integer, index, primaryKey } from "drizzle-orm/sqlite-core"
-import { createSchemaFactory } from 'drizzle-orm/zod';
-import { z } from '@hono/zod-openapi';
+import { createSchemaFactory } from 'drizzle-orm/zod'
+import { z } from '@hono/zod-openapi'
 
 export const project = sqliteTable("project", {
   id: text("id").primaryKey(),
@@ -49,5 +49,9 @@ export const projectImage = sqliteTable("project_image", {
 
 // zod schemas
 
-const { createSelectSchema } = createSchemaFactory({ zodInstance: z });
-export const ProjectSelectSchema = createSelectSchema(project)
+const { createSelectSchema, createInsertSchema } = createSchemaFactory({ zodInstance: z });
+export const projectSelectSchema = createSelectSchema(project)
+
+export const projectInsertSchema = createInsertSchema(project, {
+  title: (schema) => schema.min(1).max(200)
+})

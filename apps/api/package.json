@@ -8,10 +8,11 @@
     "lint": "eslint",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "typecheck": "tsc --noEmit",
-    "auth:generate": "npm rebuild better-sqlite3 && npx auth@latest generate --config ./better-auth.config.ts"
+    "generate:auth": "npm rebuild better-sqlite3 && npx auth@latest generate --config ./better-auth.config.ts",
+    "generate:spec": "npx tsx ./scripts/generate-spec.ts"
   },
   "dependencies": {
-    "@hono/zod-openapi": "1.4.0",
+    "@hono/zod-openapi": "^1.4.0",
     "@scalar/hono-api-reference": "0.10.20",
     "better-auth": "1.6.15",
     "drizzle-orm": "^1.0.0-rc.4",
