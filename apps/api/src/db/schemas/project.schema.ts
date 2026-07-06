@@ -4,7 +4,7 @@ import { createSchemaFactory } from 'drizzle-orm/zod'
 import { z } from '@hono/zod-openapi'
 
 export const project = sqliteTable("project", {
-  id: text("id").primaryKey(),
+  id: integer("id").primaryKey({ autoIncrement: true }),
   slug: text("slug").notNull().unique(),
   title: text("title").notNull(),
   description: text("description"),
@@ -25,7 +25,7 @@ export const project = sqliteTable("project", {
 })
 
 export const tag = sqliteTable("tag", {
-  id: text("id").primaryKey(),
+  id: integer("id").primaryKey({ autoIncrement: true }),
   name: text("name").notNull().unique(),
   slug: text("slug").notNull().unique(),
 })
@@ -40,7 +40,7 @@ export const projectTag = sqliteTable("project_tag", {
 ])
 
 export const projectImage = sqliteTable("project_image", {
-  id: text("id").primaryKey(),
+  id: integer("id").primaryKey({ autoIncrement: true }),
   projectId: text("project_id").notNull().references(() => project.id, { onDelete: "cascade" }),
   url: text("url").notNull(),
   caption: text("caption"),
@@ -49,9 +49,21 @@ export const projectImage = sqliteTable("project_image", {
 
 // zod schemas
 
-const { createSelectSchema, createInsertSchema } = createSchemaFactory({ zodInstance: z });
+const { createSelectSchema, createInsertSchema } = createSchemaFactory<undefined>({ zodInstance: z });
 export const projectSelectSchema = createSelectSchema(project)
 
 export const projectInsertSchema = createInsertSchema(project, {
-  title: (schema) => schema.min(1).max(200)
+  title: (schema) => schema.min(1).max(200),
+  description: (schema) => schema.max(500).optional(),
+  status: (schema) => schema.optional(),
+  content: (schema) => schema.min(1),
+  coverImage: () => z.url().optional(),
+  liveUrl: () => z.url().optional(),
+  repoUrl: () => z.url().optional(),
+}).omit({
+  id: true,
+  slug: true,
+  createdAt: true,
+  publishedAt: true,
+  updatedAt: true,
 })
