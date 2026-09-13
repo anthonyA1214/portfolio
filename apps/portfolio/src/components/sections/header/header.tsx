@@ -26,7 +26,7 @@ export default function Header() {
       <div className="relative z-50 flex h-16 items-center justify-between">
         {/**/}
         <Link href="/">
-          <span className="font-satisfy text-lg">anthony amiluddin</span>
+          <span className="font-script text-lg">anthony amiluddin</span>
         </Link>
 
         {/*hamburger*/}
