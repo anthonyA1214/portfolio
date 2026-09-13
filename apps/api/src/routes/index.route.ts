@@ -1,29 +1,30 @@
-import { createRoute } from "@hono/zod-openapi";
-import { createRouter } from "../lib/create-app";
+import { createRoute } from "@hono/zod-openapi"
 import * as HttpStatusCodes from "stoker/http-status-codes"
-import { jsonContent } from "stoker/openapi/helpers";
-import { createMessageObjectSchema } from "stoker/openapi/schemas";
+import { jsonContent } from "stoker/openapi/helpers"
+import { createMessageObjectSchema } from "stoker/openapi/schemas"
+import { createRouter } from "../lib/create-app"
 
-
-const router = createRouter()
-  .openapi(
-    createRoute({
-      path: "/",
-      tags: ["Index"],
-      description: "Index route",
-      method: "get",
-      responses: {
-        [HttpStatusCodes.OK]: jsonContent(
-          createMessageObjectSchema("Portfolio API"),
-          "Portfolio API Index"
-        )
-      },
-    }),
-    (c) => {
-      return c.json({
-        message: "Portfolio API",
-      }, HttpStatusCodes.OK);
+const router = createRouter().openapi(
+  createRoute({
+    path: "/",
+    tags: ["Index"],
+    description: "Index route",
+    method: "get",
+    responses: {
+      [HttpStatusCodes.OK]: jsonContent(
+        createMessageObjectSchema("Portfolio API"),
+        "Portfolio API Index"
+      ),
     },
-  );
+  }),
+  (c) => {
+    return c.json(
+      {
+        message: "Portfolio API",
+      },
+      HttpStatusCodes.OK
+    )
+  }
+)
 
-export default router;
+export default router

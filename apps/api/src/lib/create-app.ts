@@ -1,10 +1,10 @@
 import { OpenAPIHono } from "@hono/zod-openapi"
+import { requestId } from "hono/request-id"
 import { secureHeaders } from "hono/secure-headers"
+import { notFound, onError, serveEmojiFavicon } from "stoker/middlewares"
 import { corsMiddleware } from "../middlewares/cors"
 import { auth } from "./better-auth"
 import type { AppEnv } from "./types"
-import { notFound, onError, serveEmojiFavicon } from "stoker/middlewares"
-import { requestId } from "hono/request-id"
 
 export function createRouter() {
   return new OpenAPIHono<AppEnv>({

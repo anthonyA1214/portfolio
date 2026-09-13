@@ -17,24 +17,24 @@
     "generate-types": "wrangler types"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^13.7.0",
-    "@astrojs/react": "^5",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@astrojs/cloudflare": "14.3.1",
+    "@astrojs/react": "6.0.5",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
     "@workspace/ui": "workspace:*",
-    "astro": "^6",
-    "lucide-react": "1.17.0",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
-    "wrangler": "4.99.0"
+    "astro": "7.3.2",
+    "lucide-react": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "wrangler": "catalog:"
   },
   "devDependencies": {
     "@workspace/eslint-config": "workspace:^",
-    "@astrojs/check": "^0.9",
-    "@tailwindcss/vite": "^4",
-    "@types/node": "^24",
-    "eslint": "^10",
-    "typescript": "~6"
+    "@astrojs/check": "0.9.10",
+    "@tailwindcss/vite": "catalog:",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "typescript": "catalog:"
   },
   "overrides": {
     "vite": "^7"
