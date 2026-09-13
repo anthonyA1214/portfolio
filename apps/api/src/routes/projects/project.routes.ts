@@ -1,8 +1,8 @@
-import { createRoute, z } from "@hono/zod-openapi";
+import { createRoute, z } from "@hono/zod-openapi"
 import * as HttpStatusCodes from "stoker/http-status-codes"
-import { jsonContent, jsonContentRequired } from "stoker/openapi/helpers";
-import { projectInsertSchema, projectSelectSchema } from "../../db/schemas";
-import { createErrorSchema } from "stoker/openapi/schemas";
+import { jsonContent, jsonContentRequired } from "stoker/openapi/helpers"
+import { createErrorSchema } from "stoker/openapi/schemas"
+import { projectInsertSchema, projectSelectSchema } from "../../db/schemas"
 
 const tags = ["Projects"]
 
@@ -14,8 +14,8 @@ export const list = createRoute({
     [HttpStatusCodes.OK]: jsonContent(
       z.array(projectSelectSchema),
       "The list of projects"
-    )
-  }
+    ),
+  },
 })
 
 export const create = createRoute({
@@ -23,10 +23,7 @@ export const create = createRoute({
   method: "post",
   tags,
   request: {
-    body: jsonContentRequired(
-      projectInsertSchema,
-      "The project to create"
-    )
+    body: jsonContentRequired(projectInsertSchema, "The project to create"),
   },
   responses: {
     [HttpStatusCodes.CREATED]: jsonContent(
@@ -36,8 +33,8 @@ export const create = createRoute({
     [HttpStatusCodes.UNPROCESSABLE_ENTITY]: jsonContent(
       createErrorSchema(projectInsertSchema),
       "The validation error(s)"
-    )
-  }
+    ),
+  },
 })
 
 export type ListRoute = typeof list

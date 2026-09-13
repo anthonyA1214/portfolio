@@ -1,5 +1,5 @@
 import type { OpenAPIHono, RouteConfig, RouteHandler } from "@hono/zod-openapi"
-import { Schema } from "hono"
+import type { Schema } from "hono"
 
 export interface AppEnv {
   Bindings: CloudflareBindings

@@ -15,22 +15,22 @@
   },
   "dependencies": {
     "@workspace/ui": "workspace:*",
-    "lucide-react": "1.17.0",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "lucide-react": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.40.1",
-    "@tailwindcss/vite": "^4",
-    "@types/node": "^24",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@tailwindcss/vite": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "^6",
     "@workspace/eslint-config": "workspace:^",
     "@workspace/typescript-config": "workspace:*",
-    "eslint": "^10",
-    "typescript": "~6",
+    "eslint": "catalog:",
+    "typescript": "catalog:",
     "vite": "^8",
-    "wrangler": "4.99.0"
+    "wrangler": "catalog:"
   }
 }

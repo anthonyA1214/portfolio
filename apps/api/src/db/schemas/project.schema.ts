@@ -1,7 +1,13 @@
+import { z } from "@hono/zod-openapi"
 import { sql } from "drizzle-orm"
-import { sqliteTable, text, integer, index, primaryKey } from "drizzle-orm/sqlite-core"
-import { createSchemaFactory } from 'drizzle-orm/zod'
-import { z } from '@hono/zod-openapi'
+import {
+  sqliteTable,
+  text,
+  integer,
+  index,
+  primaryKey,
+} from "drizzle-orm/sqlite-core"
+import { createSchemaFactory } from "drizzle-orm/zod"
 
 export const project = sqliteTable("project", {
   id: integer("id").primaryKey({ autoIncrement: true }),
@@ -30,26 +36,41 @@ export const tag = sqliteTable("tag", {
   slug: text("slug").notNull().unique(),
 })
 
-export const projectTag = sqliteTable("project_tag", {
-  projectId: text("project_id").notNull().references(() => project.id),
-  tagId: text("tag_id").notNull().references(() => tag.id)
-}, (table) => [
-  primaryKey({ columns: [table.projectId, table.tagId] }),
-  index("project_tag_projectId_idx").on(table.projectId),
-  index("project_tag_tagId_idx").on(table.tagId),
-])
+export const projectTag = sqliteTable(
+  "project_tag",
+  {
+    projectId: text("project_id")
+      .notNull()
+      .references(() => project.id),
+    tagId: text("tag_id")
+      .notNull()
+      .references(() => tag.id),
+  },
+  (table) => [
+    primaryKey({ columns: [table.projectId, table.tagId] }),
+    index("project_tag_projectId_idx").on(table.projectId),
+    index("project_tag_tagId_idx").on(table.tagId),
+  ]
+)
 
-export const projectImage = sqliteTable("project_image", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
-  projectId: text("project_id").notNull().references(() => project.id, { onDelete: "cascade" }),
-  url: text("url").notNull(),
-  caption: text("caption"),
-  displayOrder: integer("display_order").notNull().default(0),
-}, (table) => [index("project_image_projectId_idx").on(table.projectId)])
+export const projectImage = sqliteTable(
+  "project_image",
+  {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    projectId: text("project_id")
+      .notNull()
+      .references(() => project.id, { onDelete: "cascade" }),
+    url: text("url").notNull(),
+    caption: text("caption"),
+    displayOrder: integer("display_order").notNull().default(0),
+  },
+  (table) => [index("project_image_projectId_idx").on(table.projectId)]
+)
 
 // zod schemas
 
-const { createSelectSchema, createInsertSchema } = createSchemaFactory<undefined>({ zodInstance: z });
+const { createSelectSchema, createInsertSchema } =
+  createSchemaFactory<undefined>({ zodInstance: z })
 export const projectSelectSchema = createSelectSchema(project)
 
 export const projectInsertSchema = createInsertSchema(project, {

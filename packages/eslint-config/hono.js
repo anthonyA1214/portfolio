@@ -7,4 +7,10 @@ import { config as baseConfig } from "./base.js"
  *
  * @type {import("eslint").Linter.Config}
  * */
-export const honoConfig = [...baseConfig, ...honoEslintConfig]
+export const honoConfig = [
+  ...baseConfig,
+  ...honoEslintConfig,
+  {
+    ignores: ["eslint.config.mjs"],
+  },
+]
