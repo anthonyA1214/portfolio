@@ -9,6 +9,10 @@
     "lib": ["ESNext"],
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
-    "types": ["node", "./worker-configuration.d.ts"]
-  }
+    "types": ["node", "@cloudflare/vitest-plugin/types"]
+  },
+  "include": [
+    "./**/*.ts",
+    "../src/worker-configuration.d.ts" // output of `wrangler types`
+  ]
 }
