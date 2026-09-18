@@ -1,4 +1,5 @@
 import slugify from "slugify"
+import * as HttpStatusCodes from "stoker/http-status-codes"
 import { createDb } from "../../db"
 import { project as projects } from "../../db/schemas"
 import type { AppRouteHandler } from "../../lib/types"
@@ -20,5 +21,5 @@ export const create: AppRouteHandler<CreateRoute> = async (c) => {
       slug: slugify(project.title, { lower: true, strict: true }),
     })
     .returning()
-  return c.json(inserted, 201)
+  return c.json(inserted, HttpStatusCodes.CREATED)
 }
