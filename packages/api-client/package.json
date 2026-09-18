@@ -20,6 +20,7 @@
     "@workspace/typescript-config": "workspace:*",
     "eslint": "catalog:",
     "orval": "^8.19.0",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "zod": "catalog:"
   }
 }
