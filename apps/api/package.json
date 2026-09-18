@@ -9,6 +9,10 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
     "typecheck": "tsc --noEmit",
+    "list": "wrangler d1 migrations list portfolio_db --local",
+    "list:prod": "wrangler d1 migrations list portfolio_db --remote",
+    "apply:local": "wrangler d1 migrations apply portfolio_db --local",
+    "apply:prod": "wrangler d1 migrations apply portfolio_db --remote",
     "generate:auth": "npm rebuild better-sqlite3 && npx auth@latest generate --config ./better-auth.config.ts",
     "generate:spec": "npx tsx ./scripts/generate-spec.ts"
   },
