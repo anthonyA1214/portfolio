@@ -47,7 +47,7 @@ CREATE TABLE `verification` (
 );
 --> statement-breakpoint
 CREATE TABLE `project` (
-	`id` text PRIMARY KEY,
+	`id` integer PRIMARY KEY AUTOINCREMENT,
 	`slug` text NOT NULL UNIQUE,
 	`title` text NOT NULL,
 	`description` text,
@@ -62,8 +62,8 @@ CREATE TABLE `project` (
 );
 --> statement-breakpoint
 CREATE TABLE `project_image` (
-	`id` text PRIMARY KEY,
-	`project_id` text NOT NULL,
+	`id` integer PRIMARY KEY AUTOINCREMENT,
+	`project_id` integer NOT NULL,
 	`url` text NOT NULL,
 	`caption` text,
 	`display_order` integer DEFAULT 0 NOT NULL,
@@ -71,15 +71,15 @@ CREATE TABLE `project_image` (
 );
 --> statement-breakpoint
 CREATE TABLE `project_tag` (
-	`project_id` text NOT NULL,
-	`tag_id` text NOT NULL,
+	`project_id` integer NOT NULL,
+	`tag_id` integer NOT NULL,
 	CONSTRAINT `project_tag_pk` PRIMARY KEY(`project_id`, `tag_id`),
 	CONSTRAINT `fk_project_tag_project_id_project_id_fk` FOREIGN KEY (`project_id`) REFERENCES `project`(`id`),
 	CONSTRAINT `fk_project_tag_tag_id_tag_id_fk` FOREIGN KEY (`tag_id`) REFERENCES `tag`(`id`)
 );
 --> statement-breakpoint
 CREATE TABLE `tag` (
-	`id` text PRIMARY KEY,
+	`id` integer PRIMARY KEY AUTOINCREMENT,
 	`name` text NOT NULL UNIQUE,
 	`slug` text NOT NULL UNIQUE
 );

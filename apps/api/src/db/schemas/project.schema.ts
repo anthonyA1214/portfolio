@@ -39,10 +39,10 @@ export const tag = sqliteTable("tag", {
 export const projectTag = sqliteTable(
   "project_tag",
   {
-    projectId: text("project_id")
+    projectId: integer("project_id")
       .notNull()
       .references(() => project.id),
-    tagId: text("tag_id")
+    tagId: integer("tag_id")
       .notNull()
       .references(() => tag.id),
   },
@@ -57,7 +57,7 @@ export const projectImage = sqliteTable(
   "project_image",
   {
     id: integer("id").primaryKey({ autoIncrement: true }),
-    projectId: text("project_id")
+    projectId: integer("project_id")
       .notNull()
       .references(() => project.id, { onDelete: "cascade" }),
     url: text("url").notNull(),
