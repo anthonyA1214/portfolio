@@ -8,7 +8,7 @@ const app = createApp()
 
 configureOpenAPI(app)
 
-const routes = [index, projects];
+const routes = [index, projects]
 routes.forEach((route) => {
   app.route("/api/v1/", route)
 })
