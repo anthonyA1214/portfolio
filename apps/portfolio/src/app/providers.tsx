@@ -6,7 +6,7 @@ import { Provider as WrapBalancerProvider } from "react-wrap-balancer"
 
 import { setApiBaseUrl } from "@workspace/api-client"
 
-setApiBaseUrl(process.env.NEXT_PUBLIC_API_BASE_URL!);
+setApiBaseUrl(process.env.NEXT_PUBLIC_API_BASE_URL!)
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (

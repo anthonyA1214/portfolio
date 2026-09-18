@@ -11,13 +11,13 @@ export default defineConfig({
       override: {
         mutator: {
           path: "./src/mutators/custom-instance.ts",
-          name: "customInstance"
-        }
-      }
+          name: "customInstance",
+        },
+      },
     },
     input: {
-      target: "../../apps/api/openapi.json"
-    }
+      target: "../../apps/api/openapi.json",
+    },
   },
 
   apiFetch: {
@@ -29,23 +29,23 @@ export default defineConfig({
       override: {
         mutator: {
           path: "./src/mutators/custom-fetch.ts",
-          name: "customFetch"
-        }
-      }
+          name: "customFetch",
+        },
+      },
     },
     input: {
-      target: "../../apps/api/openapi.json"
-    }
+      target: "../../apps/api/openapi.json",
+    },
   },
   apiZod: {
     output: {
       mode: "tags-split",
       target: "./src/endpoints",
       client: "zod",
-      fileExtension: ".zod.ts"
+      fileExtension: ".zod.ts",
     },
     input: {
-      target: "../../apps/api/openapi.json"
-    }
-  }
+      target: "../../apps/api/openapi.json",
+    },
+  },
 })

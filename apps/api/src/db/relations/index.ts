@@ -3,5 +3,5 @@ import { projectRelations } from "./project.relations"
 
 export const relations = {
   ...authRelations,
-  ...projectRelations
+  ...projectRelations,
 }

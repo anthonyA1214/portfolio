@@ -16,9 +16,7 @@ export default function Contact() {
                 test
               </p>
 
-              <div className="flex gap-2">
-                test
-              </div>
+              <div className="flex gap-2">test</div>
             </div>
           </div>
 
