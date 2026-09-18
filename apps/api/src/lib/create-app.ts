@@ -3,6 +3,7 @@ import type { Schema } from "hono"
 import { requestId } from "hono/request-id"
 import { secureHeaders } from "hono/secure-headers"
 import { notFound, onError, serveEmojiFavicon } from "stoker/middlewares"
+import { defaultHook } from "stoker/openapi"
 import { corsMiddleware } from "../middlewares/cors"
 import { auth } from "./better-auth"
 import type { AppEnv, AppOpenAPI } from "./types"
@@ -10,6 +11,7 @@ import type { AppEnv, AppOpenAPI } from "./types"
 export function createRouter() {
   return new OpenAPIHono<AppEnv>({
     strict: false,
+    defaultHook,
   })
 }
 
