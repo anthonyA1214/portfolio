@@ -1,10 +1,11 @@
 import { OpenAPIHono } from "@hono/zod-openapi"
+import type { Schema } from "hono"
 import { requestId } from "hono/request-id"
 import { secureHeaders } from "hono/secure-headers"
 import { notFound, onError, serveEmojiFavicon } from "stoker/middlewares"
 import { corsMiddleware } from "../middlewares/cors"
 import { auth } from "./better-auth"
-import type { AppEnv } from "./types"
+import type { AppEnv, AppOpenAPI } from "./types"
 
 export function createRouter() {
   return new OpenAPIHono<AppEnv>({
@@ -26,4 +27,8 @@ export function createApp() {
   app.onError(onError)
 
   return app
+}
+
+export function createTestApp<S extends Schema>(router: AppOpenAPI<S>) {
+  return createApp().route("/api/v1", router)
 }
