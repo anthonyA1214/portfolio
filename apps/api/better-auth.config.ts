@@ -5,7 +5,7 @@ import { drizzle } from "drizzle-orm/better-sqlite3"
 import { betterAuthOptions } from "./src/lib/better-auth/options"
 
 const sqlite = new Database(":memory:")
-const db = drizzle(sqlite)
+const db = drizzle({ client: sqlite })
 
 export const auth = betterAuth({
   ...betterAuthOptions,
