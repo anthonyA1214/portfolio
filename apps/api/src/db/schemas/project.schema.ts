@@ -14,11 +14,10 @@ export const project = sqliteTable("project", {
   slug: text("slug").notNull().unique(),
   title: text("title").notNull(),
   description: text("description"),
-  content: text("content").notNull(),
+  content: text("content"),
   status: text("status", { enum: ["draft", "published"] })
     .default("draft")
     .notNull(),
-  coverImage: text("cover_image"),
   liveUrl: text("live_url"),
   repoUrl: text("repo_url"),
   createdAt: integer("created_at", { mode: "timestamp_ms" })
@@ -41,10 +40,10 @@ export const projectTag = sqliteTable(
   {
     projectId: integer("project_id")
       .notNull()
-      .references(() => project.id),
+      .references(() => project.id, { onDelete: "cascade" }),
     tagId: integer("tag_id")
       .notNull()
-      .references(() => tag.id),
+      .references(() => tag.id, { onDelete: "cascade" }),
   },
   (table) => [
     primaryKey({ columns: [table.projectId, table.tagId] }),
@@ -61,6 +60,9 @@ export const projectImage = sqliteTable(
       .notNull()
       .references(() => project.id, { onDelete: "cascade" }),
     url: text("url").notNull(),
+    usage: text("usage", { enum: ["cover", "inline", "gallery"] })
+      .notNull()
+      .default("gallery"),
     caption: text("caption"),
     displayOrder: integer("display_order").notNull().default(0),
   },
@@ -76,14 +78,13 @@ export const projectSelectSchema = createSelectSchema(project)
 export const projectInsertSchema = createInsertSchema(project, {
   title: (schema) => schema.min(1).max(200),
   description: (schema) => schema.max(500).optional(),
-  status: (schema) => schema.optional(),
-  content: (schema) => schema.min(1),
-  coverImage: () => z.url().optional(),
   liveUrl: () => z.url().optional(),
   repoUrl: () => z.url().optional(),
 }).omit({
   id: true,
   slug: true,
+  content: true,
+  status: true,
   createdAt: true,
   publishedAt: true,
   updatedAt: true,
