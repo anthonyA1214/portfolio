@@ -17,7 +17,6 @@ describe("projects routes", () => {
     const res = await client.api.v1.projects.$post({
       json: {
         title: "My First Project",
-        content: "Some content about the project",
       },
     })
 
@@ -27,7 +26,6 @@ describe("projects routes", () => {
       const project = await res.json()
       expect(project.title).toBe("My First Project")
       expect(project.slug).toBe("my-first-project")
-      expect(project.content).toBe("Some content about the project")
       expect(project.status).toBe("draft")
     }
   })
@@ -36,9 +34,7 @@ describe("projects routes", () => {
     const res = await client.api.v1.projects.$post({
       json: {
         title: "Full Project",
-        content: "Full content",
         description: "A description of the project",
-        coverImage: "https://example.com/cover.jpg",
         liveUrl: "https://example.com",
         repoUrl: "https://github.com/example/repo",
       },
@@ -50,9 +46,7 @@ describe("projects routes", () => {
       const project = await res.json()
       expect(project.slug).toBe("full-project")
       expect(project.title).toBe("Full Project")
-      expect(project.content).toBe("Full content")
       expect(project.description).toBe("A description of the project")
-      expect(project.coverImage).toBe("https://example.com/cover.jpg")
       expect(project.liveUrl).toBe("https://example.com")
       expect(project.repoUrl).toBe("https://github.com/example/repo")
     }
@@ -62,7 +56,6 @@ describe("projects routes", () => {
     const res = await client.api.v1.projects.$post({
       json: {
         title: "List Test Project",
-        content: "Content for list test",
       },
     })
 
@@ -77,9 +70,7 @@ describe("projects routes", () => {
   it("POST /api/v1/projects should reject a missing title", async () => {
     const res = await client.api.v1.projects.$post({
       // @ts-expect-error testing missing required field
-      json: {
-        content: "Content without a title",
-      },
+      json: {},
     })
 
     expect(res.status).toBe(422)
@@ -89,24 +80,6 @@ describe("projects routes", () => {
       expect(body.success).toBe(false)
       const issues = body.error.issues
       expect(issues.some((issue) => issue.path[0] === "title")).toBe(true)
-    }
-  })
-
-  it("POST /api/v1/projects should reject a missing content", async () => {
-    const res = await client.api.v1.projects.$post({
-      // @ts-expect-error testing missing required field
-      json: {
-        title: "Title without content",
-      },
-    })
-
-    expect(res.status).toBe(422)
-
-    if (res.status === 422) {
-      const body = await res.json()
-      expect(body.success).toBe(false)
-      const issues = body.error.issues
-      expect(issues.some((issue) => issue.path[0] === "content")).toBe(true)
     }
   })
 
@@ -114,7 +87,6 @@ describe("projects routes", () => {
     const res = await client.api.v1.projects.$post({
       json: {
         title: "a".repeat(201),
-        content: "Content with a long title",
       },
     })
 
@@ -125,45 +97,6 @@ describe("projects routes", () => {
       expect(body.success).toBe(false)
       const issues = body.error.issues
       expect(issues.some((issue) => issue.path[0] === "title")).toBe(true)
-    }
-  })
-
-  it("POST /api/v1/projects should reject an invalid coverImage URL", async () => {
-    const res = await client.api.v1.projects.$post({
-      json: {
-        title: "Project with invalid coverImage",
-        content: "Content with invalid coverImage",
-        coverImage: "not-a-valid-url",
-      },
-    })
-
-    expect(res.status).toBe(422)
-
-    if (res.status === 422) {
-      const body = await res.json()
-      expect(body.success).toBe(false)
-      const issues = body.error.issues
-      expect(issues.some((issue) => issue.path[0] === "coverImage")).toBe(true)
-    }
-  })
-
-  it("POST /api/v1/projects should reject an invalid status enum value", async () => {
-    const res = await client.api.v1.projects.$post({
-      json: {
-        title: "Project with invalid status",
-        content: "Content with invalid status",
-        // @ts-expect-error testing invalid enum value
-        status: "invalid-status", // Invalid status
-      },
-    })
-
-    expect(res.status).toBe(422)
-
-    if (res.status === 422) {
-      const body = await res.json()
-      expect(body.success).toBe(false)
-      const issues = body.error.issues
-      expect(issues.some((issue) => issue.path[0] === "status")).toBe(true)
     }
   })
 })

@@ -51,9 +51,8 @@ CREATE TABLE `project` (
 	`slug` text NOT NULL UNIQUE,
 	`title` text NOT NULL,
 	`description` text,
-	`content` text NOT NULL,
+	`content` text,
 	`status` text DEFAULT 'draft' NOT NULL,
-	`cover_image` text,
 	`live_url` text,
 	`repo_url` text,
 	`created_at` integer DEFAULT (cast(unixepoch('subsecond') * 1000 as integer)) NOT NULL,
@@ -65,6 +64,7 @@ CREATE TABLE `project_image` (
 	`id` integer PRIMARY KEY AUTOINCREMENT,
 	`project_id` integer NOT NULL,
 	`url` text NOT NULL,
+	`usage` text DEFAULT 'gallery' NOT NULL,
 	`caption` text,
 	`display_order` integer DEFAULT 0 NOT NULL,
 	CONSTRAINT `fk_project_image_project_id_project_id_fk` FOREIGN KEY (`project_id`) REFERENCES `project`(`id`) ON DELETE CASCADE
@@ -74,8 +74,8 @@ CREATE TABLE `project_tag` (
 	`project_id` integer NOT NULL,
 	`tag_id` integer NOT NULL,
 	CONSTRAINT `project_tag_pk` PRIMARY KEY(`project_id`, `tag_id`),
-	CONSTRAINT `fk_project_tag_project_id_project_id_fk` FOREIGN KEY (`project_id`) REFERENCES `project`(`id`),
-	CONSTRAINT `fk_project_tag_tag_id_tag_id_fk` FOREIGN KEY (`tag_id`) REFERENCES `tag`(`id`)
+	CONSTRAINT `fk_project_tag_project_id_project_id_fk` FOREIGN KEY (`project_id`) REFERENCES `project`(`id`) ON DELETE CASCADE,
+	CONSTRAINT `fk_project_tag_tag_id_tag_id_fk` FOREIGN KEY (`tag_id`) REFERENCES `tag`(`id`) ON DELETE CASCADE
 );
 --> statement-breakpoint
 CREATE TABLE `tag` (

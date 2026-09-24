@@ -1,7 +1,7 @@
 {
   "version": "7",
   "dialect": "sqlite",
-  "id": "de5b63a1-9ead-4a03-9a64-42db6738b487",
+  "id": "bfeeec43-988c-4cbd-917c-50b9230d086c",
   "prevIds": ["00000000-0000-0000-0000-000000000000"],
   "ddl": [
     {
@@ -418,7 +418,7 @@
     },
     {
       "type": "text",
-      "notNull": true,
+      "notNull": false,
       "autoincrement": false,
       "default": null,
       "generated": null,
@@ -433,16 +433,6 @@
       "default": "'draft'",
       "generated": null,
       "name": "status",
-      "entityType": "columns",
-      "table": "project"
-    },
-    {
-      "type": "text",
-      "notNull": false,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "cover_image",
       "entityType": "columns",
       "table": "project"
     },
@@ -523,6 +513,16 @@
       "default": null,
       "generated": null,
       "name": "url",
+      "entityType": "columns",
+      "table": "project_image"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "'gallery'",
+      "generated": null,
+      "name": "usage",
       "entityType": "columns",
       "table": "project_image"
     },
@@ -634,7 +634,7 @@
       "tableTo": "project",
       "columnsTo": ["id"],
       "onUpdate": "NO ACTION",
-      "onDelete": "NO ACTION",
+      "onDelete": "CASCADE",
       "nameExplicit": false,
       "name": "fk_project_tag_project_id_project_id_fk",
       "entityType": "fks",
@@ -645,7 +645,7 @@
       "tableTo": "tag",
       "columnsTo": ["id"],
       "onUpdate": "NO ACTION",
-      "onDelete": "NO ACTION",
+      "onDelete": "CASCADE",
       "nameExplicit": false,
       "name": "fk_project_tag_tag_id_tag_id_fk",
       "entityType": "fks",
