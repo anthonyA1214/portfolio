@@ -3,19 +3,21 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy --minify",
-    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
     "lint": "eslint",
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
     "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "generate:auth": "npm rebuild better-sqlite3 && npx auth@latest generate --config ./better-auth.config.ts",
+    "generate:spec": "npx tsx ./scripts/generate-spec.ts",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "db:generate": "drizzle-kit generate",
+    "db:studio": "drizzle-kit studio",
     "list": "wrangler d1 migrations list portfolio_db --local",
     "list:prod": "wrangler d1 migrations list portfolio_db --remote",
     "apply:local": "wrangler d1 migrations apply portfolio_db --local",
     "apply:prod": "wrangler d1 migrations apply portfolio_db --remote",
-    "generate:auth": "npm rebuild better-sqlite3 && npx auth@latest generate --config ./better-auth.config.ts",
-    "generate:spec": "npx tsx ./scripts/generate-spec.ts",
-    "test": "vitest run"
+    "deploy": "wrangler deploy --minify"
   },
   "dependencies": {
     "@hono/zod-openapi": "^1.4.0",
