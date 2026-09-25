@@ -1,4 +1,3 @@
-import { z } from "@hono/zod-openapi"
 import { sql } from "drizzle-orm"
 import {
   sqliteTable,
@@ -7,7 +6,6 @@ import {
   index,
   primaryKey,
 } from "drizzle-orm/sqlite-core"
-import { createSchemaFactory } from "drizzle-orm/zod"
 
 export const project = sqliteTable("project", {
   id: integer("id").primaryKey({ autoIncrement: true }),
@@ -68,24 +66,3 @@ export const projectImage = sqliteTable(
   },
   (table) => [index("project_image_projectId_idx").on(table.projectId)]
 )
-
-// zod schemas
-
-const { createSelectSchema, createInsertSchema } =
-  createSchemaFactory<undefined>({ zodInstance: z })
-export const projectSelectSchema = createSelectSchema(project)
-
-export const projectInsertSchema = createInsertSchema(project, {
-  title: (schema) => schema.min(1).max(200),
-  description: (schema) => schema.max(500).optional(),
-  liveUrl: () => z.url().optional(),
-  repoUrl: () => z.url().optional(),
-}).omit({
-  id: true,
-  slug: true,
-  content: true,
-  status: true,
-  createdAt: true,
-  publishedAt: true,
-  updatedAt: true,
-})
