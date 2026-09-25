@@ -2,7 +2,7 @@ import { createRoute, z } from "@hono/zod-openapi"
 import * as HttpStatusCodes from "stoker/http-status-codes"
 import { jsonContent, jsonContentRequired } from "stoker/openapi/helpers"
 import { createErrorSchema } from "stoker/openapi/schemas"
-import { projectInsertSchema, projectSelectSchema } from "../../db/schemas"
+import { projectInsertSchema, projectSelectSchema } from "./project.validation"
 
 const tags = ["Projects"]
 
