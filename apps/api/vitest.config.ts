@@ -21,6 +21,26 @@ export default defineConfig(async () => {
     ],
     test: {
       setupFiles: ["./test/apply-migrations.ts"],
+      coverage: {
+        provider: "istanbul" as const,
+        reporter: ["text", "json", "json-summary", "html"],
+        reportOnFailure: true,
+        include: ["src/**"],
+        exclude: [
+          "test/**",
+          "scripts/**",
+          "**/*.config.*",
+          "**/*.d.ts",
+          "src/db/**",
+          "src/lib/better-auth/**",
+        ],
+        thresholds: {
+          lines: 80,
+          functions: 80,
+          branches: 80,
+          statements: 80,
+        },
+      },
     },
   }
 })

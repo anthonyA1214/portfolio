@@ -28,6 +28,7 @@
     "format:check": "turbo format:check",
     "typecheck": "turbo typecheck",
     "test": "turbo test",
+    "test:coverage": "turbo test:coverage",
     "prepare": "husky"
   },
   "workspaces": [
