@@ -71,6 +71,15 @@ jobs:
         with:
           turbo-team: ${{ vars.TURBO_TEAM }}
 
+      - name: Create .dev.vars for tests
+        working-directory: apps/api
+        run: |
+          cat <<EOF > .dev.vars
+          ALLOWED_ORIGINS=http://localhost:3000
+          BETTER_AUTH_URL=http://localhost:8787
+          BETTER_AUTH_SECRET=${{ secrets.BETTER_AUTH_SECRET }}
+          EOF
+
       - run: bun run test:coverage
 
       - name: "API Report Coverage"
