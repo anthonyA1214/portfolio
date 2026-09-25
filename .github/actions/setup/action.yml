@@ -19,7 +19,9 @@ runs:
           ~/.bun/install/cache
         key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
 
-    - run: bun install --frozen-lockfile
+    - name: Install dependencies
+      run: bun install --frozen-lockfile
+      shell: bash
 
     - name: Set up Turborepo Remote Cache
       uses: vercel/setup-turborepo-remote-cache-action@v1.0.0
