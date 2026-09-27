@@ -2,7 +2,7 @@ import { env } from "cloudflare:workers"
 import { testClient } from "hono/testing"
 import { describe, it, expect } from "vitest"
 import { createTestApp } from "../../lib/create-app"
-import router from "./project.index"
+import router from "./projects.index"
 
 const client = testClient(createTestApp(router), env)
 

@@ -2,7 +2,7 @@ import { showRoutes } from "hono/dev"
 import configureOpenAPI from "./lib/configure-open-api"
 import { createApp } from "./lib/create-app"
 import index from "./routes/index.route"
-import projects from "./routes/projects/project.index"
+import projects from "./routes/projects/projects.index"
 
 const app = createApp()
 
