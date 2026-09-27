@@ -3,20 +3,16 @@ import * as schema from "../schemas"
 
 export const projectRelations = defineRelationsPart(schema, (r) => ({
   project: {
-    projectTag: r.many.projectTag(),
+    tags: r.many.tag({
+      from: r.project.id.through(r.projectTag.projectId),
+      to: r.tag.id.through(r.projectTag.tagId),
+    }),
     projectImages: r.many.projectImage(),
   },
   tag: {
-    projectTags: r.many.projectTag(),
-  },
-  projectTag: {
-    project: r.one.project({
-      from: r.projectTag.projectId,
-      to: r.project.id,
-    }),
-    tag: r.one.tag({
-      from: r.projectTag.tagId,
-      to: r.tag.id,
+    projects: r.many.project({
+      from: r.tag.id.through(r.projectTag.tagId),
+      to: r.project.id.through(r.projectTag.projectId),
     }),
   },
   projectImage: {

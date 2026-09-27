@@ -2,7 +2,7 @@ import { env } from "cloudflare:workers"
 import { testClient } from "hono/testing"
 import { describe, it, expect } from "vitest"
 import { createTestApp } from "../../lib/create-app"
-import router from "./project.index"
+import router from "./projects.index"
 
 const client = testClient(createTestApp(router), env)
 
@@ -98,5 +98,36 @@ describe("projects routes", () => {
       const issues = body.error.issues
       expect(issues.some((issue) => issue.path[0] === "title")).toBe(true)
     }
+  })
+
+  it("GET /api/v1/projects/:slug should return a project with the given slug", async () => {
+    const createRes = await client.api.v1.projects.$post({
+      json: { title: "Slug Test Project" },
+    })
+
+    expect(createRes.status).toBe(201)
+    if (createRes.status !== 201) {
+      return
+    }
+    const project = await createRes.json()
+
+    const res = await client.api.v1.projects[":slug"].$get({
+      param: { slug: project.slug },
+    })
+
+    expect(res.status).toBe(200)
+    if (res.status !== 200) {
+      return
+    }
+    const fetchedProject = await res.json()
+    expect(fetchedProject.slug).toBe(project.slug)
+  })
+
+  it("GET /api/v1/projects/:slug should return 404 for a non-existent slug", async () => {
+    const res = await client.api.v1.projects[":slug"].$get({
+      param: { slug: "this-slug-does-not-exist" },
+    })
+
+    expect(res.status).toBe(404)
   })
 })
