@@ -7,7 +7,7 @@
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
     "husky": "9.1.7",
-    "lint-staged": "17.0.7",
+    "lint-staged": "17.6.0",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^1.0.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
