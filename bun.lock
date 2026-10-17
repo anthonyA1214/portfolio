@@ -98,7 +98,7 @@
       "version": "0.1.0",
       "dependencies": {
         "@gsap/react": "2.1.2",
-        "@lottiefiles/dotlottie-react": "0.19.4",
+        "@lottiefiles/dotlottie-react": "0.20.0",
         "@workspace/api-client": "workspace:*",
         "@workspace/ui": "workspace:*",
         "class-variance-authority": "catalog:",
@@ -637,9 +637,9 @@
 
     "@js-temporal/polyfill": ["@js-temporal/polyfill@0.5.1", "", { "dependencies": { "jsbi": "^4.3.0" } }, "sha512-hloP58zRVCRSpgDxmqCWJNlizAlUgJFqG2ypq79DCvyv9tHjRYMDOcPFjzfl/A1/YxDvRCZz8wvZvmapQnKwFQ=="],
 
-    "@lottiefiles/dotlottie-react": ["@lottiefiles/dotlottie-react@0.19.4", "", { "dependencies": { "@lottiefiles/dotlottie-web": "0.74.0" }, "peerDependencies": { "react": "^17 || ^18 || ^19" } }, "sha512-YgX1Ie0gK9MEA89Ap7Ic/lOv85sOzELV3y3RAQ4GrB79+wJ4gLga9Ge59mWzBqjlbT8bZNhNPEm+jYyV8kMYqg=="],
+    "@lottiefiles/dotlottie-react": ["@lottiefiles/dotlottie-react@0.20.0", "", { "dependencies": { "@lottiefiles/dotlottie-web": "0.81.0" }, "peerDependencies": { "react": "^17 || ^18 || ^19" } }, "sha512-M4HLo6RxNTbYwByZw7ns2zaGgPx0PpGZU1xfyMdj8VEoTasSJ1uhsJZjl+l55TPQ7g0soF7JVHEJLTOv1TIeMA=="],
 
-    "@lottiefiles/dotlottie-web": ["@lottiefiles/dotlottie-web@0.74.0", "", {}, "sha512-rG12+dJSVhQDdleGr9epR7zU/UJ6hh8jzBDHAurClHP5t5dSrOh3eP3UCFxolpVPcobaRVYsBnYg4HQokQewpg=="],
+    "@lottiefiles/dotlottie-web": ["@lottiefiles/dotlottie-web@0.81.0", "", {}, "sha512-BmX/+0eaK2unVexuB0VZLvBsax2BS8fLwwIdUqF4AO9C7tFw97eTi90C//20QVK4q08SDhnnszysCGX0Qt7XPA=="],
 
     "@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@1.1.4", "", { "dependencies": { "@tybys/wasm-util": "^0.10.1" }, "peerDependencies": { "@emnapi/core": "^1.7.1", "@emnapi/runtime": "^1.7.1" } }, "sha512-3NQNNgA1YSlJb/kMH1ildASP9HW7/7kYnRI2szWJaofaS1hWmbGI4H+d3+22aGzXXN9IJ+n+GiFVcGipJP18ow=="],
 
