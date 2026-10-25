@@ -1,5 +1,6 @@
 import { Button } from "@workspace/ui/components/button"
 import { DotLottieReact } from "@lottiefiles/dotlottie-react"
+import loaderCat from "@/assets/lotties/loader-cat.json"
 
 export default function About() {
   return (
@@ -30,10 +31,10 @@ export default function About() {
 
           {/**/}
           <DotLottieReact
-            src="/lotties/83627cee-1153-11ee-b832-fb1242dd7de9.json"
+            data={loaderCat}
             autoplay
             loop
-            className="shrink-0"
+            className="hidden shrink-0 md:block"
             layout={{
               fit: "contain",
             }}
