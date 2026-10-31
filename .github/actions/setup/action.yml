@@ -24,6 +24,6 @@ runs:
       shell: bash
 
     - name: Set up Turborepo Remote Cache
-      uses: vercel/setup-turborepo-remote-cache-action@v1.0.0
+      uses: vercel/setup-turborepo-remote-cache-action@v1.1.0
       with:
         team: ${{ inputs.turbo-team }}
